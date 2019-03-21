@@ -1,36 +1,28 @@
 def DB_USER;
 def DB_NAME;
-
-pipeline {
-
-  agent any
-  
- 
-  stages {
+try
+{
+	node('master')
+	{
         
     stage('Cloning Git') {
-	
-      steps {
-	   
-	  
+
+	  	  
         git credentialsId: 'singu_github', 
 		    url: 'https://github.com/singuvenkatesh/serverless_framework.git',
 			branch: 'master' 
 			}
-				}
 				
 				
      		stage ("Reading props from master")
 		{
-		
-		steps {
-			def props = readProperties  file: env.properties/"{ENVIRONMENT}".properties
+
+			def props = readProperties  file: env.properties +'/'+ENVIRONMENT+'.properties
 			DB_USER = props"{DB_USER}"
 			DB_NAME = props"{DB_NAME}"
 			
 			}
 
-		}
     
     }
     
