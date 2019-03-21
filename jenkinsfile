@@ -21,6 +21,13 @@ def DB_NAME;
 			DB_NAME = props['DB_NAME']
 			
 			}
+			
+			stage ("property ")
+		{
+
+
+			echo "DB_USER"
+			}
 
     
     }
