@@ -2,7 +2,14 @@ pipeline {
 
   agent any
   
+environment {
 
+                    def props = readProperties  file: env.properties +'/'+ENVIRONMENT+'.properties'
+			DB_USER = props['DB_USER']
+			DB_NAME = props['DB_NAME']
+
+
+}
    
 
   stages {
@@ -24,10 +31,8 @@ pipeline {
             steps {
                 script {
 
-                    
-                    def props = readProperties  file: env.properties +'/'+ENVIRONMENT+'.properties'
-			DB_USER = props['DB_USER']
-			DB_NAME = props['DB_NAME']
+                    echo "${DB_USER}"
+
                 }
                 
                
