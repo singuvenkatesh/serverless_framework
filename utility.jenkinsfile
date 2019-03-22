@@ -7,6 +7,8 @@ environment {
                     def props = readProperties  file: env.properties +'/'+ENVIRONMENT+'.properties'
 			DB_USER = "${props.DB_USER}"
 			DB_NAME = "${props.DB_NAME}"
+			src1 = "${WORKSPACE}/nova/nova-account/"
+   			src2 = "${WORKSPACE}/nova/nova-account/api/functions/nva-account"
 
 
 }
