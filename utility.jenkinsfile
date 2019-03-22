@@ -5,7 +5,7 @@ pipeline {
 environment {
 
                     def props = readProperties  file: env.properties +'/'+ENVIRONMENT+'.properties'
-			DB_USER = props['DB_USER']
+			DB_USER = "${props.DB_USER}"
 			DB_NAME = props['DB_NAME']
 
 
