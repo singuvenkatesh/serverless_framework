@@ -1,0 +1,39 @@
+pipeline {
+
+  agent any
+  
+
+   
+
+  stages {
+        
+    stage('Cloning Git') {
+	
+      steps {
+	   
+	  
+            git credentialsId: 'singu_github', 
+		    url: 'https://github.com/singuvenkatesh/serverless_framework.git',
+			branch: 'master'
+			}
+				}
+				
+				
+        stage ('Preparation ENVIRONMENT')
+        {
+            steps {
+                script {
+
+                    
+                    def props = readProperties  file: env.properties +'/'+ENVIRONMENT+'.properties'
+			DB_USER = props['DB_USER']
+			DB_NAME = props['DB_NAME']
+                }
+                
+               
+            }
+        }
+        
+        }
+        
+          }
